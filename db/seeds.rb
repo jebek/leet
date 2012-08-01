@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+more_sets = [
+  {:title => 'Aladdin', :description => 'G'},
+  {:title => 'When Harry Met Sally', :description => 'R'},
+  {:title => 'The Help', :description => 'PG-13'},
+  {:title => 'Raiders of the Lost Ark', :description => 'PG'}
+]
+
+more_sets.each do |set|
+  Vset.create!(set)
+end

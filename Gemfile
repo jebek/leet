@@ -6,7 +6,7 @@ gem 'rails', '3.2.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
+gem 'haml'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,11 +22,13 @@ end
 
 group :development do
   gem 'rspec-rails', '2.0.1'
+  gem 'sqlite3'
 end
 
 group :test do
   gem 'rspec', '2.0.1'
   gem 'webrat', '0.7.1'
+  gem 'sqlite3'
 end
 
 gem 'jquery-rails'

@@ -1,4 +1,7 @@
 Leet::Application.routes.draw do
+  resources :vsets
+  
+  root :to => redirect('/vsets') 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
