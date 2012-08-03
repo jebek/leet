@@ -1,0 +1,24 @@
+#quiz-container.main-quiz-holder
+  - @words.each_with_index do |word, index|
+    .slide-container
+      .question-number= "#{index + 1}/#{@words.length}"
+      %div{:class => (index+1 == @words.length)?'final question':'question'}= word.name
+      %ul.answers
+        %li= @answer_choices[index][0]
+        %li= @answer_choices[index][1]
+        %li= @answer_choices[index][2]
+        %li= @answer_choices[index][3]
+  .results-container.slide-container 
+    .question-number finished
+    .result-keeper
+  .notice
+  .progress-keeper
+    .progress
+
+:javascript
+  $('#quiz-container').jquizzy({
+    answers: #{@answers},
+    questions: #{@questions},
+    answer_choices: #{@answer_choices},
+    twitterStatus: 'Woo! I got {score} on the quiz.'
+  });

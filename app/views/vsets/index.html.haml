@@ -7,11 +7,15 @@
       %th Set Title
       %th Description
       %th More Info
+      %th Quiz
+      %th Edit
+      %th Delete
   %tbody
     - @vsets.each_with_index do |vset, index|
       %tr
         %td= vset.title 
         %td= vset.description
         %td= link_to "More about #{vset.title}", vset_path(vset)
+        %td= link_to "Take Quiz", :controller => 'vsets', :action => 'quiz', :vset => vset.id
         %td= link_to "Edit", edit_vset_path(vset)
         %td= button_to "Delete", vset_path(vset), :method => :delete

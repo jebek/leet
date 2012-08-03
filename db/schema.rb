@@ -28,8 +28,13 @@ ActiveRecord::Schema.define(:version => 20120801010612) do
   end
 
   create_table "words", :force => true do |t|
+    t.string   "name"
+    t.string   "definition"
+    t.integer  "vset_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "words", ["vset_id"], :name => "index_words_on_vset_id"
 
 end

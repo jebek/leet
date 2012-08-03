@@ -16,3 +16,13 @@ more_sets = [
 more_sets.each do |set|
   Vset.create!(set)
 end
+
+more_words = [
+  {:name => 'a', :definition => '1', :vset_id => '1'},
+  {:name => 'b', :definition => '2', :vset_id => '2'},
+  {:name => 'c', :definition => '3', :vset_id => '3'},
+  {:name => 'd', :definition => '4', :vset_id => '4'}]
+  
+more_words.each do |words|
+  Word.create!(words)
+end

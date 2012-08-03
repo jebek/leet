@@ -1,0 +1,11 @@
+%h2 Create New Set
+
+= form_tag vsets_path, :method => :post do
+
+  = label :vset, :title, 'Title'
+  = text_field :vset, :title
+
+  = label :movie, :vset, 'Description'
+  = text_field :movie, :vset, :description
+
+  = submit_tag 'Save Changes'

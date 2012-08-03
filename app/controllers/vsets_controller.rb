@@ -18,9 +18,9 @@ class VsetsController < ApplicationController
   
   def update
     @vset = Vset.find(params[:id])
-    @vset.update_attributes!(params[:Vset])
+    @vset.update_attributes!(params[:vset])
     flash[:notice] = "#{@vset.title} was successfully updated."
-    redirect_to vset_path(@vset)
+    redirect_to vsets_path
   end
   
   def destroy
@@ -32,17 +32,19 @@ class VsetsController < ApplicationController
   
   def show
     @vset = Vset.find(params[:id])
+    @words = @vset.words
   end
   
   def search_quizlet
-    @vsets = Vset.find_in_quizlet(params[:search_terms])
- 
+    @words = Quizlet.find_in_quizlet(params[:search_terms], 2)
+    redirect_to vsets_path
   end
   
   def quiz
-    @vsets = Vset.all.shuffle
-    #@questions = @Vsets.map { |a| a.title }
-    #@answers = @Vsets.map { |a| a.rating }
-    #@answer_choices = @answers.map { |a| [a, "b", "c", "d"].shuffle }
+    @words = Word.find_all_by_vset_id(params[:vset]).shuffle
+    @questions = @words.map { |a| a.name }
+    @answers = @words.map { |a| a.definition }
+    
+    @answer_choices = @answers.map { |a| @answers.reject { |answer| answer == a }.shuffle[0..2].push(a).shuffle }
   end
 end

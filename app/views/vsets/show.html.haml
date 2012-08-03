@@ -1,0 +1,31 @@
+-# in app/views/movies/show.html.haml
+
+%h2 Details about #{@vset.title}
+
+%ul#details
+  %li
+    Description:
+    = @vset.description
+
+%table#words
+  %thead
+    %tr
+      %th Word Title
+      %th Description
+      %th More Info
+  %tbody
+    - @words.each_with_index do |word, index|
+      %tr
+        %td= word.name 
+        %td= word.definition
+        %td= link_to "More about #{word.name}", [@vset, word]
+        %td= link_to "Edit", edit_vset_word_path(@vset, word)
+        %td= button_to "Delete", vset_word_path(@vset, word), :method => :delete
+
+= link_to 'Back to set list', vsets_path
+
+= form_tag :action => 'search_quizlet' do
+
+  %label{:for => 'search_terms'} Search Terms
+  = text_field_tag 'search_quizlet'
+  = submit_tag 'Search Quizlet'

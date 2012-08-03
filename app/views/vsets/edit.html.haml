@@ -1,0 +1,11 @@
+%h2 Edit Movie
+
+= form_tag vset_path(@vset), :method => :put do
+
+  = label :vset, :title, 'Title'
+  = text_field :vset, 'title'
+
+  = label :vset, :description, 'Description'
+  = text_field :vset, :description
+
+  = submit_tag 'Save Changes'
