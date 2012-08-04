@@ -25,8 +25,6 @@
            };  
 		     
     var config = $.extend(defaults, settings);  
-
-	
     var superContainer = $(this);
 
     var progress = superContainer.find('.progress'),
@@ -51,12 +49,12 @@
             resultArr.push(flag);
         }
         return resultArr;
-    }
+    };
 
     function roundReloaded(num, dec) {
         var result = Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
         return result;
-    }
+    };
 
     function judgeSkills(score) {
         var returnString;
@@ -74,7 +72,7 @@ else if (score > 20)
             return config.resultComments.poor;
 else
             return config.resultComments.worst;
-    }
+    };
 
     progressKeeper.hide();
     notice.hide();
@@ -130,7 +128,7 @@ else
         return false;
 
     });
-<!-- changed from '.next' to 'li' -->
+
     superContainer.find('li').click(function() {
 
         if ($(this).parents('.slide-container').find('li.selected').length === 0) {
@@ -151,18 +149,6 @@ else
 				q_num++;
     });
 
-    superContainer.find('.prev').click(function() {
-        notice.hide();
-        $(this).parents('.slide-container').fadeOut(500, function() {
-            $(this).prev().fadeIn(500);
-            });
-
-        progress.animate({
-            width: progress.width() - Math.round(progressWidth / questionLength)
-            }, 500);
-        return false;
-    });
-
     superContainer.find('ul.answers:last li').click(function() {
         if ($(this).parents('.slide-container').find('li.selected').length === 0) {
             notice.fadeIn(300);
@@ -172,30 +158,14 @@ else
         superContainer.find('li.selected').each(function(index) {
             userAnswers.push($(this).html());
         });
-		  
-		  if (config.sendResultsURL !== null) 
-		  {
-			  console.log("OH HAI");
-			  var collate =[];
-			  for (r=0;r<userAnswers.length;r++)
-			  {
-				  collate.push('{questionNumber:"'+parseInt(r+1)+'", UserAnswer:"'+userAnswers[r]+'"}');
-			  } 
-			  $.ajax({
-					  type: 'POST',
-					  url: config.sendResultsURL,
-					  data: '[' + collate.join(",") + ']',
-					  complete: function () {console.log("OH HAI");}
-					});
-		  }
 
         progressKeeper.hide();
         var results = checkAnswers(),
         resultSet = '',
         trueCount = 0,
-		  shareButton = '',
+		  	shareButton = '',
         score,
-		  url;
+		  	url;
 		  
 		  if (config.shortURL === null)  {config.shortURL = window.location};
 		  
