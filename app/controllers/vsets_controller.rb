@@ -4,12 +4,13 @@ class VsetsController < ApplicationController
   end
   
   def new
+    @vset = Vset.new
   end
   
   def create
-    @vset = Vset.create!(params[:Vset])
+    @vset = Vset.create!(params[:vset])
     flash[:notice] = "#{@vset.title} was succesfully created."
-    redirect_to Vsets_path
+    redirect_to vsets_path
   end
   
   def edit
@@ -36,8 +37,9 @@ class VsetsController < ApplicationController
   end
   
   def search_quizlet
-    @words = Quizlet.find_in_quizlet(params[:search_terms], 2)
-    redirect_to vsets_path
+    @vset = Vset.find(params[:id])
+    @words = Quizlet.find_in_quizlet(params[:search_terms], @vset.id)
+    redirect_to @vset
   end
   
   def quiz

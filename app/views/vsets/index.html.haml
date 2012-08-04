@@ -19,3 +19,5 @@
         %td= link_to "Take Quiz", :controller => 'vsets', :action => 'quiz', :vset => vset.id
         %td= link_to "Edit", edit_vset_path(vset)
         %td= button_to "Delete", vset_path(vset), :method => :delete
+
+= link_to "Add new set", new_vset_path

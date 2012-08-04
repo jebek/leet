@@ -1,10 +1,15 @@
 Leet::Application.routes.draw do
-  match '/vsets/quiz' => 'vsets#quiz'
+  match '/vsets/quiz'
+  post 'vsets/:id/search_quizlet' => 'vsets#search_quizlet'
+  
   resources :vsets do
+    member do
+      get 'search_quizlet'
+    end
     resources :words
   end
   
-  post 'vsets/search_quizlet'
+ 
   
   root :to => redirect('/vsets') 
   # The priority is based upon order of creation:
