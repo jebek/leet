@@ -2,14 +2,22 @@
 %html
   %head
     %title LeetSAT
+    /[if lt IE 9]
+      %script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
 
   %body
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        %h2= link_to 'LeetSAT', vsets_path
+      = link_to "Add new set", new_vset_path
+  #container
     - if flash[:notice]
       #notice.message= flash[:notice]
     - elsif flash[:warning]
       #warning.message= flash[:warning]
-    %h2= link_to 'LeetSAT', vsets_path
     = yield
