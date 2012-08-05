@@ -83,28 +83,28 @@ else
 				return false;
 			}
       var keyCode = e.keyCode || e.which,
-          arrow = {left: 37, up: 38, right: 39, down: 40 }, $status = $('#status');
+          choice = {first: 74, second: 75, third: 76, fourth: 59 }, $status = $('#status');
 
       switch (keyCode) {
 				
-        case arrow.left:
-					isAnimating = true;
-          next_q(1);
-        break;
-
-        case arrow.up:
+        case choice.first:
 					isAnimating = true;
           next_q(0);
         break;
 
-        case arrow.right:
+        case choice.second:
 					isAnimating = true;
-          next_q(3);
+          next_q(1);
         break;
 
-        case arrow.down:
+        case choice.third:
 					isAnimating = true;
           next_q(2);
+        break;
+
+        case choice.fourth:
+					isAnimating = true;
+          next_q(3);
         break;
       }
     });
@@ -130,14 +130,17 @@ else
     });
 
     superContainer.find('li').click(function() {
-
-        if ($(this).parents('.slide-container').find('li.selected').length === 0) {
+	 			isAnimating = true;
+				$this = $(this);
+				$this.parents('.answers').children('li').removeClass('selected');
+        $this.addClass('selected');
+        if ($this.parents('.slide-container').find('li.selected').length === 0) {
             notice.fadeIn(300);
             return false;
         }
 
         notice.hide();
-        $(this).parents('.slide-container').fadeOut(500, function() {
+        $this.parents('.slide-container').fadeOut(500, function() {
             $(this).next().fadeIn(500, function() {
 							isAnimating = false;
 });
