@@ -4,7 +4,7 @@
       %li= link_to 'LeetSAT', vsets_path
       %li= link_to "Add new set", new_vset_path, {:id => 'new_set'}
     .nav-collapse.collapse
-      #user_nav
+      #user_nav{:style => 'float: right;'}
         - if user_signed_in?
           Signed in as #{current_user.email}.  
           = link_to "Not you?", destroy_user_session_path, :method => :delete
