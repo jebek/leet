@@ -2,12 +2,13 @@
 #sets
   - @vsets.each_with_index do |vset, index|
     .item
-      %h2= vset.title 
+      %h2= link_to vset.title, vset_path(vset) 
       %p= vset.description
       %p= link_to "More about #{vset.title}", vset_path(vset)
-      %p= link_to "Take Quiz", :controller => 'vsets', :action => 'quiz', :vset => vset.id
-      %p= link_to "Edit", edit_vset_path(vset)
-      %p= button_to "Delete", vset_path(vset), :method => :delete
+      %p#take-quiz= link_to "Take Quiz", :controller => 'vsets', :action => 'quiz', :vset => vset.id
+      - if current_user.try(:admin?)
+        %p= link_to "Edit", edit_vset_path(vset)
+        %p= button_to "Delete", vset_path(vset), :method => :delete
 
 
 :javascript

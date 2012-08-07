@@ -1,4 +1,6 @@
 Leet::Application.routes.draw do
+  devise_for :users
+
   match '/vsets/quiz'
   post 'vsets/:id/search_quizlet' => 'vsets#search_quizlet'
   

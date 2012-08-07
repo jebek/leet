@@ -10,11 +10,8 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
 
   %body
-  .navbar.navbar-fixed-top
-    .navbar-inner
-      .container
-        %h2= link_to 'LeetSAT', vsets_path
-      = link_to "Add new set", new_vset_path
+  = render 'layouts/header'
+
   #container
     - if flash[:notice]
       #notice.message= flash[:notice]
