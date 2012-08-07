@@ -326,6 +326,9 @@ border: none;
   padding: 10px;
   float: left;
   background: #D8D5D2;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .masonry,
