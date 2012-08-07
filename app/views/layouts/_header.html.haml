@@ -2,7 +2,7 @@
   .navbar-inner
     %ul.nav
       %li= link_to 'LeetSAT', vsets_path
-      - if user_signed_in?
+      - if current_user.try(:admin?)
         %li= link_to "Add new set", new_vset_path, {:id => 'new_set'}
     .nav-collapse.collapse
       #user_nav

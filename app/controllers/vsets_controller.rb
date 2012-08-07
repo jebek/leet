@@ -10,7 +10,7 @@ class VsetsController < ApplicationController
   def create
     @vset = Vset.create!(params[:vset])
     flash[:notice] = "#{@vset.title} was succesfully created."
-    redirect_to vsets_path
+    redirect_to @vset
   end
   
   def edit
