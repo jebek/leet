@@ -235,17 +235,17 @@
 	margin: 5px 0;
 	min-height: 20px;
 	font-size: 14px;
-	background: url(http://s3.amazonaws.com/bucketname/leetsat/answer.png) no-repeat 5px 2px #FCFCFC;
+	background: url(http://s3.amazonaws.com/leetsat/answer.png) no-repeat 5px 2px #FCFCFC;
 	border:1px solid #F6F6F6;
 	border-radius: 3px;
 }
 
 .main-quiz-holder .resultsview-qhover li.selected {
-	background: url(http://s3.amazonaws.com/bucketname/leetsat/incorrect.png) no-repeat 5px 2px;
+	background: url(http://s3.amazonaws.com/leetsat/incorrect.png) no-repeat 5px 2px;
 }
 	
 .main-quiz-holder .resultsview-qhover li.right {
-	background: url(http://s3.amazonaws.com/bucketname/leetsat/correct.png) no-repeat 5px 2px;
+	background: url(http://s3.amazonaws.com/leetsat/correct.png) no-repeat 5px 2px;
 }	
 	
 .main-quiz-holder .correct, .main-quiz-holder .wrong {    
