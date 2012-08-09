@@ -17,10 +17,10 @@
 #words
   - @words.each_with_index do |word, index|
     .item
-      .card
-        .front.face
+      #block.card
+        .front.side
           %h2= "#{index + 1}. #{word.name} "
-        .back.face
+        .back.side
           %p= word.definition
           - if current_user.try(:admin?)
             %p= link_to "Edit", edit_vset_word_path(@vset, word)
@@ -33,4 +33,7 @@
   $('#words').masonry({
       itemSelector : '.item',
       columnWidth : 240
+  });
+  $('.card').on('click', function() {
+      $(this).toggleClass('rotated');
   });

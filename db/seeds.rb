@@ -13,9 +13,6 @@ more_sets = [
   {:title => 'Raiders of the Lost Ark', :description => 'PG'}
 ]
 
-more_sets.each do |set|
-  Vset.create!(set)
-end
 
 more_words = [
   {:name => 'a', :definition => '1', :vset_id => '1'},

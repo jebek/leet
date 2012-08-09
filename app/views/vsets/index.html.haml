@@ -4,7 +4,7 @@
     .item
       %h2= link_to vset.title, vset_path(vset) 
       %p= vset.description
-      %p= link_to "More about #{vset.title}", vset_path(vset)
+      %p= link_to "Flashcards", vset_path(vset)
       %p#take-quiz= link_to "Take Quiz", :controller => 'vsets', :action => 'quiz', :vset => vset.id
       - if current_user.try(:admin?)
         %p= link_to "Edit", edit_vset_path(vset)

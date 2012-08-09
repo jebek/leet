@@ -83,7 +83,7 @@ else
 				return false;
 			}
       var keyCode = e.keyCode || e.which,
-          choice = {first: 74, second: 75, third: 76, fourth: 59 }, $status = $('#status');
+          choice = {first: 74, second: 75, third: 76, fourth: 186 }, $status = $('#status');
 
       switch (keyCode) {
 				
