@@ -183,6 +183,15 @@
      width: 65px;
 }
 */
+.main-quiz-holder .nav-previous {
+	padding-left: 25px;
+	background: url(../assets/back.png) left no-repeat;
+}
+
+.main-quiz-holder  .nav-next {
+	padding-right: 25px;
+	background: url(../assets/forward.png) right no-repeat;
+}
 
 .main-quiz-holder .nav-show-result{
 	padding-left: 25px;
@@ -235,17 +244,17 @@
 	margin: 5px 0;
 	min-height: 20px;
 	font-size: 14px;
-	background: url(http://s3.amazonaws.com/leetsat/answer.png) no-repeat 5px 2px #FCFCFC;
+	background: url(../assets/answer.png) no-repeat 5px 2px #FCFCFC;
 	border:1px solid #F6F6F6;
 	border-radius: 3px;
 }
 
 .main-quiz-holder .resultsview-qhover li.selected {
-	background: url(http://s3.amazonaws.com/leetsat/incorrect.png) no-repeat 5px 2px;
+	background: url(../assets/incorrect.png) no-repeat 5px 2px;
 }
 	
 .main-quiz-holder .resultsview-qhover li.right {
-	background: url(http://s3.amazonaws.com/leetsat/correct.png) no-repeat 5px 2px;
+	background: url(../assets/correct.png) no-repeat 5px 2px;
 }	
 	
 .main-quiz-holder .correct, .main-quiz-holder .wrong {    
