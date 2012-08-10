@@ -250,11 +250,11 @@
 }
 
 .main-quiz-holder .resultsview-qhover li.selected {
-	background: url(../assets/incorrect.png) no-repeat 5px 2px;
+	background: #EA4646 no-repeat 5px 2px;
 }
 	
 .main-quiz-holder .resultsview-qhover li.right {
-	background: url(../assets/correct.png) no-repeat 5px 2px;
+	background: #C3E462 no-repeat 5px 2px;
 }	
 	
 .main-quiz-holder .correct, .main-quiz-holder .wrong {    
