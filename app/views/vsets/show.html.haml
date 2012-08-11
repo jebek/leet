@@ -17,14 +17,16 @@
 #words
   - @words.each_with_index do |word, index|
     .item
-      #block.card
-        .front.side
-          %h2= "#{index + 1}. #{word.name} "
-        .back.side
-          %p= word.definition
-          - if current_user.try(:admin?)
-            %p= link_to "Edit", edit_vset_word_path(@vset, word)
-            %p= button_to "Delete", vset_word_path(@vset, word), :method => :delete
+      .block
+        .card
+          .front.side
+            %h2.centered= "#{index + 1}. #{word.name} "
+          .back.side
+            %h2= word.definition
+            - if current_user.try(:admin?)
+              %p= link_to "Edit", edit_vset_word_path(@vset, word)
+              %p= button_to "Delete", vset_word_path(@vset, word), :method => :delete
+      .clearfix
 
 = link_to 'Back to set list', vsets_path
 

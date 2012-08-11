@@ -324,7 +324,6 @@ border: none;
   width: 200px;
   margin: 10px;
   padding: 10px;
-  float: left;
   background: #D8D5D2;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -359,4 +358,81 @@ border: none;
 #user_nav {
   float: right;
   margin-top: 10px;
+}
+
+.block {
+	-moz-perspective: 800px;
+	-webkit-perspective: 800px;
+	perspective: 800px;
+	
+}
+
+.card {
+	position: relative;
+	width: 100%;
+  height: 100%;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -moz-transition: -moz-transform 1s;
+  -webkit-transition: -webkit-transform 1s;
+  transition: transform 1s;
+
+}
+
+.card .side {
+	display: block;
+  width: 100%;
+  height: 100%;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card .front {
+	text-align: center;
+	background: white;
+	position: absolute;
+}
+
+.card .back {
+	background: white;
+	top: 0;
+	
+	-moz-transform: rotateY( 180deg );
+  -webkit-transform: rotateY( 180deg );
+  transform: rotateY( 180deg );
+}
+
+.card.rotated {
+	-moz-transform: rotateY( 180deg );
+  -webkit-transform: rotateY( 180deg );
+  transform: rotateY( 180deg );
+}
+
+.card h2 {
+	padding: 5px;
+}
+
+.card h2.centered {
+	padding: 5px 0;
+}
+
+.front:before {
+	content: '';
+  display: inline-block;
+  height: 100%; 
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+.centered {
+	display: inline-block;
+  vertical-align: middle;
+}
+.clear {
+	clear: both;
 }
