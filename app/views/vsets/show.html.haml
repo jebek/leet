@@ -22,7 +22,7 @@
           .front.side
             %h2.centered= "#{index + 1}. #{word.name} "
           .back.side
-            %h2= word.definition
+            %h2.definition= word.definition
             - if current_user.try(:admin?)
               %p= link_to "Edit", edit_vset_word_path(@vset, word)
               %p= button_to "Delete", vset_word_path(@vset, word), :method => :delete
@@ -36,6 +36,24 @@
       itemSelector : '.item',
       columnWidth : 240
   });
+
   $('.card').on('click', function() {
       $(this).toggleClass('rotated');
   });
+
+  var width = $('.card').width();
+  $('.centered').each(function (i, box) {
+    var line = $(box).wrapInner('<span style="white-space:nowrap">').children()[ 0 ];
+
+    function changeFontSize(n) {
+      $(box).css( 'font-size', function ( i, val ) {
+        return parseInt( val, 10 ) - n;
+      });
+    }
+
+    while ($(line).width() >= (width - 5)) {
+      changeFontSize(1);
+    }
+
+    $(box).text( $( line ).text());
+  })
