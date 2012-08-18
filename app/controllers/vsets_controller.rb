@@ -48,6 +48,6 @@ class VsetsController < ApplicationController
     @answers = @words.map { |a| a.definition }
     answer_with_index = @answers.map { |a| Hash[@answers.reject { |answer| answer == a }.shuffle[0..2].push(a).map.with_index {|ans, index| [ans, index]}.shuffle.map {|final| final}] }
     @answer_choices = answer_with_index.each { |a| a.map {|ans| ans.keys } }
-    @correct_answers = answer_with_index.each { |a| a.map.with_index {|ans, index| index if (ans.value == 3) }
+    @correct_answers = answer_with_index.each { |a| a.map.with_index {|ans, index| index if (ans.value == 3) } }
   end
 end
