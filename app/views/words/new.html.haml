@@ -1,0 +1,11 @@
+%h2 Create New Card
+
+= form_tag vset_words_path, :method => :post do
+
+  = label :word, :name, 'Name'
+  = text_field :word, :name
+
+  = label :word, :definition, 'Definition'
+  = text_area :word, :definition
+
+  = submit_tag 'Save Changes'

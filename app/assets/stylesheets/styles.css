@@ -392,6 +392,7 @@ border: none;
 	text-align: center;
 	background: white;
 	position: absolute;
+	cursor: pointer;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -400,6 +401,7 @@ border: none;
 .card .back {
 	background: white;
 	top: 0;
+	cursor: pointer;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;

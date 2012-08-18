@@ -1,0 +1,14 @@
+%h2 Edit Word
+
+= form_tag vset_word_path(@vset, @word), :method => :put do
+
+  = label :word, :name, 'Name'
+  = text_field :word, 'name'
+
+  = label :word, :definition, 'Definition'
+  = text_field :word, :definition
+
+  = label :word, :vset_id, 'Set ID'
+  = number_field :word, :vset_id
+
+  = submit_tag 'Save Changes'

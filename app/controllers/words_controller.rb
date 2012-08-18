@@ -4,15 +4,19 @@ class WordsController < ApplicationController
   end
   
   def new
+    @word = Word.new
+    @vset = Vset.find(params[:vset_id])
   end
   
   def create
-    @word = Word.create!(params[:word])
+    @vset = Vset.find(params[:vset_id])
+    @word = @vset.words.create!(params[:word])
     flash[:notice] = "#{@word.name} was succesfully created."
-    redirect_to vset_words_path
+    redirect_to vset_path(@word.vset)
   end
   
   def edit
+    @vset = Vset.find(params[:vset_id])
     @word = Word.find(params[:id])
   end
   
@@ -20,7 +24,7 @@ class WordsController < ApplicationController
     @word = Word.find(params[:id])
     @word.update_attributes!(params[:word])
     flash[:notice] = "#{@word.name} was successfully updated."
-    redirect_to vset_word_path(@word)
+    redirect_to vset_path(@word.vset)
   end
   
   def destroy
