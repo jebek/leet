@@ -10,6 +10,7 @@
 		shortURL: null,
 		answers: null,
 		answer_choices: null,
+		correct_answers: null,
 		sendResultsURL: null,
 		resultComments :  
 	  {
@@ -39,9 +40,9 @@
     function checkAnswers() {
         var resultArr = [],
         flag = false;
-        for (i = 0; i < config.answers.length; i++) {
+        for (i = 0; i < config.correct_answers.length; i++) {
 
-            if (config.answers[i] == userAnswers[i]) {
+            if (config.correct_answers[i] == userAnswers[i]) {
                 flag = true;
             } else {
                 flag = false;
@@ -159,7 +160,7 @@ else
         }
 				
         superContainer.find('li.selected').each(function(index) {
-            userAnswers.push($(this).html());
+            userAnswers.push($(this).parents('.answers').children('li').index($(this).parents('.answers').find('li.selected')) + 1);
         });
 
         progressKeeper.hide();
