@@ -160,7 +160,7 @@ else
         }
 				
         superContainer.find('li.selected').each(function(index) {
-            userAnswers.push($(this).parents('.answers').children('li').index($(this).parents('.answers').find('li.selected')) + 1);
+            userAnswers.push($(this).parents('.answers').children('li').index($(this).parents('.answers').find('li.selected')));
         });
 
         progressKeeper.hide();
