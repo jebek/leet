@@ -8,7 +8,6 @@
 		endText: 'Finished!',
 		splashImage: 'img/start.png',
 		shortURL: null,
-		answers: null,
 		answer_choices: null,
 		correct_answers: null,
 		sendResultsURL: null,
@@ -181,12 +180,12 @@ else
             resultSet += '<div class="result-row"> Question #' + (i + 1) + (results[i] === true ? "<div class='correct'><span>Correct</span></div>": "<div class='wrong'><span>Incorrect</span></div>");
             resultSet += '<div class="resultsview-qhover">' + config.questions[i];
             resultSet += "<ul>";
-            for (answersIteratorIndex = 0; answersIteratorIndex < config.answer_choices[0].length; answersIteratorIndex++) {
+            for (answersIteratorIndex = 0; answersIteratorIndex < config.answer_choices[i].length; answersIteratorIndex++) {
                 var classestoAdd = '';
-                if (config.answer_choices[i][answersIteratorIndex] == config.answers[i]) {
+                if (config.correct_answers[i] == answersIteratorIndex) {
                     classestoAdd += 'right';
                 }
-					 if (userAnswers[i] == config.answer_choices[i][answersIteratorIndex]) {
+					      if (userAnswers[i] == answersIteratorIndex) {
                     classestoAdd += ' selected';
                 }
                 resultSet += '<li class="' + classestoAdd + '">' + config.answer_choices[i][answersIteratorIndex] + '</li>';

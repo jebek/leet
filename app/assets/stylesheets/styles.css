@@ -439,3 +439,45 @@ border: none;
 .clear {
 	clear: both;
 }
+
+#vsets {
+	margin-top: 20px;
+}
+
+.tagged {
+	background: lightgray;
+	padding: 10px;
+	border-radius: 25px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-transition: .1s;
+	display: inline-block;
+	text-decoration: none;
+	outline: none;
+}
+
+.tagged:hover {
+	background: beige;
+	-webkit-transition: .1s;
+	text-decoration: none;
+}
+
+.navbar-container {
+	width: 940px;
+	margin: 0 auto;
+}
+
+.tagged.active {
+	background: lightblue;
+	color: white;
+}
+
+#profile {
+	width: 100%;
+	background: beige;
+	padding: 10px;
+	margin-bottom: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}

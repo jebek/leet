@@ -1,5 +1,15 @@
 -#  This file is app/views/sets/index.html.haml
-#sets
+- if user_signed_in?
+  #profile
+    %h1= current_user.email
+    %p= "Due Today"
+
+#tags
+  = link_to 'All', root_url, :class => 'tagged'
+  - ActsAsTaggableOn::Tag.all.each do |tag|
+    = link_to tag.name, tagged_url(:tag => tag.name), :class => 'tagged'
+
+#vsets
   - @vsets.each_with_index do |vset, index|
     .item
       %h2= link_to vset.title, vset_path(vset) 
@@ -12,8 +22,18 @@
 
 
 :javascript
-  $('#container').masonry({
+  $('#vsets').masonry({
       // options
       itemSelector : '.item',
       columnWidth : 240
+  });
+
+  $('.tagged').on('click', function(e) {
+    e.preventDefault();
+    $('.tagged').removeClass('active');
+    $(this).addClass('active');
+    var url = $(this).attr('href');
+    $('#vsets').load(url + ' .item', function () {
+      $(this).masonry('reload');
+    });
   });

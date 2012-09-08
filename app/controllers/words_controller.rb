@@ -42,10 +42,4 @@ class WordsController < ApplicationController
     @words = Word.find_in_quizlet(params[:search_terms])
   end
   
-  def quiz
-    @words = Word.find_all_by_vset_id(params[:vset_id]).shuffle
-    @questions = @words.map { |a| a.name }
-    @answers = @words.map { |a| a.definition }
-    @answer_choices = @answers.map { |a| [a, "b", "c", "d"].shuffle }
-  end
 end

@@ -2,6 +2,10 @@
 
 %h2 #{@vset.title}
 
+- @vset.tags.any?
+  - @vset.tags.each do |tag|
+  = link_to tag.name, tagged_url(:tag => tag.name)
+
 %ul#details
   %li
     Words
@@ -58,3 +62,4 @@
 
     $(box).text( $( line ).text());
   })
+  

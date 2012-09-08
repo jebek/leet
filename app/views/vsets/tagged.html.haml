@@ -1,0 +1,20 @@
+-#  This file is app/views/vsets/tagged.html.haml
+
+#vsets
+  - @vsets.each_with_index do |vset, index|
+    .item
+      %h2= link_to vset.title, vset_path(vset) 
+      %p= vset.description
+      %p= link_to "Flashcards", vset_path(vset)
+      %p#take-quiz= link_to "Take Quiz", :controller => 'vsets', :action => 'quiz', :vset => vset.id
+      - if current_user.try(:admin?)
+        %p= link_to "Edit", edit_vset_path(vset)
+        %p= button_to "Delete", vset_path(vset), :method => :delete
+
+
+:javascript
+  $('#vsets').masonry({
+      // options
+      itemSelector : '.item',
+      columnWidth : 240
+  });

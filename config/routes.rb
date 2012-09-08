@@ -3,6 +3,7 @@ Leet::Application.routes.draw do
 
   match '/vsets/quiz'
   post 'vsets/:id/search_quizlet' => 'vsets#search_quizlet'
+  match 'tagged' => 'vsets#tagged', :as => 'tagged'
   
   resources :vsets do
     member do
