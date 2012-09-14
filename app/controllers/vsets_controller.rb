@@ -44,6 +44,7 @@ class VsetsController < ApplicationController
   
   def quiz
     @words = Word.find_all_by_vset_id(params[:vset]).shuffle
+    @word_id = @words.map {|a| a.id }
     @questions = @words.map { |a| a.name }
     @answers = @words.map { |a| a.definition }
     answer_with_index = @answers.map { |a| 

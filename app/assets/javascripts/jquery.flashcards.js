@@ -1,5 +1,4 @@
 (function($){
-	
 	$.fn.jquizzy = function(settings) {
 		
 	var defaults = {
@@ -8,21 +7,23 @@
 		endText: 'Finished!',
 		splashImage: 'img/start.png',
 		shortURL: null,
+		word_id: null,
 		answer_choices: null,
 		correct_answers: null,
-		sendResultsURL: null,
+		sendResultsURL: '/results/create',
 		resultComments :  
 	  {
-		    perfect: 'Perfect!',
-			 excellent: 'Excellent!',
-			 good: 'Good!',
-			 average: 'Acceptable!',
-			 bad: 'Disappointing!',
-			 poor: 'Not Good!',
-			 worst: 'Real Shitty!'
+		    perfect: 'a',
+			 excellent: 'a',
+			 good: 'a',
+			 average: 'a',
+			 bad: 'a',
+			 poor: 'a',
+			 worst: 'a'
 	  }
 
-           };  
+           };
+  
 		     
     var config = $.extend(defaults, settings);  
     var superContainer = $(this);
@@ -37,14 +38,15 @@
     slidesList = superContainer.find('.slide-container');
 		
     function checkAnswers() {
+	
         var resultArr = [],
         flag = false;
         for (i = 0; i < config.correct_answers.length; i++) {
 
             if (config.correct_answers[i] == userAnswers[i]) {
-                flag = true;
+                flag = 1;
             } else {
-                flag = false;
+                flag = 0;
             }
             resultArr.push(flag);
         }
@@ -82,6 +84,7 @@ else
 			if(isAnimating) {
 				return false;
 			}
+			
       var keyCode = e.keyCode || e.which,
           choice = {first: 74, second: 75, third: 76, fourth: 186 }, $status = $('#status');
 
@@ -129,6 +132,7 @@ else
 
     });
 
+		
     superContainer.find('li').click(function() {
 	 			isAnimating = true;
 				$this = $(this);
@@ -151,7 +155,7 @@ else
         return false;
 				q_num++;
     });
-
+		
     superContainer.find('ul.answers:last li').click(function() {
         if ($(this).parents('.slide-container').find('li.selected').length === 0) {
             notice.fadeIn(300);
@@ -161,23 +165,42 @@ else
         superContainer.find('li.selected').each(function(index) {
             userAnswers.push($(this).parents('.answers').children('li').index($(this).parents('.answers').find('li.selected')));
         });
-
-        progressKeeper.hide();
-        var results = checkAnswers(),
+				var results = checkAnswers(),
         resultSet = '',
         trueCount = 0,
 		  	shareButton = '',
         score,
 		  	url;
+				if (config.sendResultsURL !== null) 
+		  {
+			  console.log("OH HAI");
+			  var collate =[];
+			  for (r=0;r<userAnswers.length;r++)
+			  {
+				  collate.push('{"word_id":' + config.word_id[r] + ', "correct":'+ results[r] +', "UserAnswer":"'+userAnswers[r]+'"}');
+			  } 
+				sending_data = '[' + collate.join(",") + ']'
+			  $.ajax({
+					  type: 'POST',
+					  url: config.sendResultsURL,
+					  data: sending_data,
+					  contentType: 'application/json; charset=utf-8',
+					  dataType: 'application/json',
+					  complete: function () {console.log("OH HAI");}
+					});
+		  }
+
+        progressKeeper.hide();
+        
 		  
 		  if (config.shortURL === null)  {config.shortURL = window.location};
 		  
         for (var i = 0, toLoopTill = results.length; i < toLoopTill; i++) {
-            if (results[i] === true) {
+            if (results[i] === 1) {
                 trueCount++;
                 isCorrect = true;
             }
-            resultSet += '<div class="result-row"> Question #' + (i + 1) + (results[i] === true ? "<div class='correct'><span>Correct</span></div>": "<div class='wrong'><span>Incorrect</span></div>");
+            resultSet += '<div class="result-row"> Question #' + (i + 1) + (results[i] === 1 ? "<div class='correct'><span>Correct</span></div>": "<div class='wrong'><span>Incorrect</span></div>");
             resultSet += '<div class="resultsview-qhover">' + config.questions[i];
             resultSet += "<ul>";
             for (answersIteratorIndex = 0; answersIteratorIndex < config.answer_choices[i].length; answersIteratorIndex++) {

@@ -17,6 +17,7 @@
 
 :javascript
   $('#quiz-container').jquizzy({
+    word_id: #{@word_id},
     questions: #{@questions},
     answer_choices: #{@answer_choices},
     correct_answers: #{@correct_answers},
